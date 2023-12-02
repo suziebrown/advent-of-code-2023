@@ -6,16 +6,26 @@ import kotlin.io.path.readLines
 /**
  * Reads lines from the given input txt file.
  */
-fun readInput(name: String) = Path("src/$name.txt").readLines()
+fun readInput(name: String) = Path("src/input/$name.txt").readLines()
 
-/**
- * Converts string to md5 hash.
- */
-fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray()))
-    .toString(16)
-    .padStart(32, '0')
+fun changeConsoleToRed() = print("\u001b[31m");
+fun changeConsoleToGreen() = print("\u001b[32m");
+fun resetConsoleColour() = print("\u001b[0m");
 
-/**
- * The cleaner shorthand for printing output.
- */
-fun Any?.println() = println(this)
+fun printTestResult(day: Int, part: Int, checkFunction: (input: List<String>) -> Int, expectedResult: Int){
+    val inputFileName = "Day${day.toString().padStart(2, '0')}_Part${part}_test"
+    val input = readInput(inputFileName)
+
+    val result = checkFunction(input)
+    print("Part $part test: $result ")
+
+    if (result == expectedResult) {
+        changeConsoleToGreen()
+        println("PASS")
+    } else {
+        changeConsoleToRed()
+        println("FAIL")
+    }
+
+    resetConsoleColour()
+}
