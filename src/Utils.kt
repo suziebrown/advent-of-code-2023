@@ -1,5 +1,3 @@
-import java.math.BigInteger
-import java.security.MessageDigest
 import kotlin.io.path.Path
 import kotlin.io.path.readLines
 
@@ -8,9 +6,9 @@ import kotlin.io.path.readLines
  */
 fun readInput(name: String) = Path("src/input/$name.txt").readLines()
 
-fun changeConsoleToRed() = print("\u001b[31m");
-fun changeConsoleToGreen() = print("\u001b[32m");
-fun resetConsoleColour() = print("\u001b[0m");
+fun changeConsoleToRed() = print("\u001b[31m")
+fun changeConsoleToGreen() = print("\u001b[32m")
+fun resetConsoleColour() = print("\u001b[0m")
 
 fun printTestResult(day: Int, part: Int, checkFunction: (input: List<String>) -> Int, expectedResult: Int){
     val inputFileName = "Day${day.toString().padStart(2, '0')}_Part${part}_test"
