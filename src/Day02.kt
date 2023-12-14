@@ -3,7 +3,7 @@ fun main() {
     class Game(val id: Int, val cubeSets: List<CubeSet>)
 
     fun getNumberOfBallsOfColour(cubeSetInput: String, colour: String): Int {
-        return ("\\d+(?=\\s${colour})").toRegex().find(cubeSetInput)?.value?.toInt() ?: 0
+        return ("\\d+(?=\\s$colour)").toRegex().find(cubeSetInput)?.value?.toInt() ?: 0
     }
 
     fun parseCubeSet(cubeSetInput: String): CubeSet {
@@ -49,8 +49,8 @@ fun main() {
         return games.map { getMaxCubeSet(it) }.map { calculatePower(it) }.sum()
     }
 
-    printTestResult(::part1, 8, 2)
-    printTestResult(::part2, 2286, 2)
+    printTestResult(::part1, 8, 2, 1)
+    printTestResult(::part2, 2286, 2, 2)
     println()
 
     val input = readInput("Day02")
