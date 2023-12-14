@@ -11,7 +11,7 @@ fun main() {
         "nine" to '9'
     )
 
-    fun convertWrittenNumberToChar(digit: String) : Char {
+    fun convertWrittenNumberToChar(digit: String): Char {
         if (digit in digitsSpelledOut.keys) {
             return digitsSpelledOut[digit]!!
         }
@@ -25,7 +25,7 @@ fun main() {
 
     fun surroundWithParentheses(s: String) = "($s)"
 
-    fun getTwoDigitNumberFromLine(line: String, regex: Regex) : Int {
+    fun getTwoDigitNumberFromLine(line: String, regex: Regex): Int {
         val matchResult = regex.findAll(line)
         if (matchResult.none()) {
             throw Exception("No digit found in $line")
@@ -39,18 +39,18 @@ fun main() {
 
     fun part1(input: List<String>): Int {
         val regex = "([0-9])".toRegex()
-        val calibrationValues = input.map{getTwoDigitNumberFromLine(it, regex)}
+        val calibrationValues = input.map { getTwoDigitNumberFromLine(it, regex) }
         return calibrationValues.sum()
     }
 
     fun part2(input: List<String>): Int {
-        val regex = "([0-9])|${digitsSpelledOut.keys.map{surroundWithParentheses(it)}.joinToString("|")}".toRegex()
-        val calibrationValues = input.map{getTwoDigitNumberFromLine(it, regex)}
+        val regex = "([0-9])|${digitsSpelledOut.keys.map { surroundWithParentheses(it) }.joinToString("|")}".toRegex()
+        val calibrationValues = input.map { getTwoDigitNumberFromLine(it, regex) }
         return calibrationValues.sum()
     }
 
-    printTestResult(1, 1, ::part1, 142)
-    printTestResult(1, 2, ::part2, 281)
+    printTestResult(::part1, 142, 1, 1)
+    printTestResult(::part2, 281, 1, 2)
     println()
 
     val input = readInput("Day01")
