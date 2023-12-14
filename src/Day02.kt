@@ -1,19 +1,15 @@
 fun main() {
-    class CubeSet(red: Int, green: Int, blue: Int) {
-        val red = red
-        val green = green
-        val blue = blue
-    }
+    class CubeSet(val red: Int, val green: Int, val blue: Int)
+    class Game(val id: Int, val cubeSets: List<CubeSet>)
 
-    class Game(id: Int, cubeSets: List<CubeSet>) {
-        val id = id
-        val cubeSets = cubeSets
+    fun getNumberOfBallsOfColour(cubeSetInput: String, colour: String): Int {
+        return ("\\d+(?=\\s${colour})").toRegex().find(cubeSetInput)?.value?.toInt() ?: 0
     }
 
     fun parseCubeSet(cubeSetInput: String): CubeSet {
-        val red = ("\\d+(?=\\sred)").toRegex().find(cubeSetInput)?.value?.toInt() ?: 0
-        val green = ("\\d+(?=\\sgreen)").toRegex().find(cubeSetInput)?.value?.toInt() ?: 0
-        val blue = ("\\d+(?=\\sblue)").toRegex().find(cubeSetInput)?.value?.toInt() ?: 0
+        val red = getNumberOfBallsOfColour(cubeSetInput, "red")
+        val green = getNumberOfBallsOfColour(cubeSetInput, "green")
+        val blue = getNumberOfBallsOfColour(cubeSetInput, "blue")
 
         return CubeSet(red, green, blue)
     }
