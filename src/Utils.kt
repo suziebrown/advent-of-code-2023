@@ -32,3 +32,12 @@ fun printTestResult(checkFunction: (input: List<String>) -> Int, expectedResult:
 
     resetConsoleColour()
 }
+
+fun printResult(partFunction: (input: List<String>) -> Int, day: Int, part: Int) {
+    val paddedDay = day.toString().padStart(2, '0')
+    val input = readInput("Day${paddedDay}")
+
+    val result = partFunction(input)
+
+    println("Part $part: $result ")
+}

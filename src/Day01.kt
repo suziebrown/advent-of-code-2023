@@ -52,8 +52,6 @@ fun main() {
     printTestResult(::part1, 142, 1, 1)
     printTestResult(::part2, 281, 1, 2)
     println()
-
-    val input = readInput("Day01")
-    println("Part 1: " + part1(input))
-    println("Part 2: " + part2(input))
+    printResult(::part1, 1, 1)
+    printResult(::part2, 1, 2)
 }
